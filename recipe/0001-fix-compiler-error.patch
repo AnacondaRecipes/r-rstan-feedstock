@@ -1,0 +1,35 @@
+From 18d20546e9c5349df5d7e294b0f548df526902dd Mon Sep 17 00:00:00 2001
+From: Ben Goodrich <goodrich.ben@gmail.com>
+Date: Thu, 7 Sep 2017 10:00:55 -0400
+Subject: [PATCH] fix compiler error
+
+---
+ rstan/rstan/src/Makevars     | 2 +-
+ rstan/rstan/src/Makevars.win | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/rstan/rstan/src/Makevars b/rstan/rstan/src/Makevars
+index cb7955c..3bea009 100644
+--- a/rstan/rstan/src/Makevars
++++ b/rstan/rstan/src/Makevars
+@@ -1,5 +1,5 @@
+ STANHEADERS_SRC = `"$(R_HOME)/bin$(R_ARCH_BIN)/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`
+ 
+-PKG_CPPFLAGS = -I"../inst/include" -I"../inst/include/boost_not_in_BH" -I"$(STANHEADERS_SRC)" -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DFUSION_MAX_VECTOR_SIZE=12
++PKG_CPPFLAGS = -I"../inst/include" -I"../inst/include/boost_not_in_BH" -I"$(STANHEADERS_SRC)" -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DFUSION_MAX_VECTOR_SIZE=12 -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION
+ SHLIB_LDFLAGS = $(SHLIB_CXXLDFLAGS) 
+ SHLIB_LD = $(SHLIB_CXXLD)
+diff --git a/rstan/rstan/src/Makevars.win b/rstan/rstan/src/Makevars.win
+index cb7955c..3bea009 100644
+--- a/rstan/rstan/src/Makevars.win
++++ b/rstan/rstan/src/Makevars.win
+@@ -1,5 +1,5 @@
+ STANHEADERS_SRC = `"$(R_HOME)/bin$(R_ARCH_BIN)/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`
+ 
+-PKG_CPPFLAGS = -I"../inst/include" -I"../inst/include/boost_not_in_BH" -I"$(STANHEADERS_SRC)" -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DFUSION_MAX_VECTOR_SIZE=12
++PKG_CPPFLAGS = -I"../inst/include" -I"../inst/include/boost_not_in_BH" -I"$(STANHEADERS_SRC)" -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DFUSION_MAX_VECTOR_SIZE=12 -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION
+ SHLIB_LDFLAGS = $(SHLIB_CXXLDFLAGS) 
+ SHLIB_LD = $(SHLIB_CXXLD)
+-- 
+2.13.6
+
