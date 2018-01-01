@@ -22,6 +22,7 @@ build:
   # If this is a new build for the same version, increment the build number.
   number: 0
 
+
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
@@ -30,12 +31,14 @@ build:
 # Suggests: RUnit, RcppEigen (>= 0.3.3.3.0), BH (>= 1.65), parallel, KernSmooth, loo (>= 1.0.0), shinystan (>= 2.2.1), bayesplot, rstantools, rstudioapi, Matrix, knitr (>= 1.15.1)
 requirements:
   build:
-    - r-base
     - {{ compiler('c') }}        # [not win]
     - {{ compiler('cxx') }}      # [not win]
     - {{native}}toolchain        # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}make
+
+  host:
+    - r-base
     - r-bh >=1.65
     - r-rcpp >=0.12.0
     - r-rcppeigen >=0.3.3.3.0
