@@ -15,9 +15,6 @@ source:
   sha256: a7b197e6e42f8f0c302da9205afc19a0261eaf6af1425854303d2ce6cbd36729
 
 
-  patches:
-    - 0001-fix-compiler-error.patch
-
 build:
   # If this is a new build for the same version, increment the build number.
   number: 0
